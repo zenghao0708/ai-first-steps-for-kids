@@ -2,6 +2,10 @@
   "title": "AI 小侦探",
   "subtitle": "给三年级孩子的人工智能第一课",
   "language": "zh-CN",
+  "creator": "zenghao0708",
+  "publisher": "AI 小侦探开源项目",
+  "rights": "书稿与插画采用 CC BY-NC-SA 4.0；构建代码采用 MIT License",
+  "modified": "2026-08-01T00:00:00Z",
   "audience": "小学三年级学生及其家长、教师",
   "source_order": [
     {

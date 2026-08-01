@@ -4,6 +4,8 @@
 
 这是一本正在创作中的少儿 AI 科普书。它用校园、家庭和游戏中的故事，解释人工智能、机器学习、数据、图像识别、语音识别、生成式 AI、大语言模型、机器人以及 AI 安全等基础概念。
 
+**电子书**：[下载 EPUB 阅读版](https://github.com/zenghao0708/ai-first-steps-for-kids/raw/main/dist/ai-detective.epub) · [SHA-256 校验值](dist/SHA256SUMS)
+
 ## 读者
 
 - 主要读者：小学三年级学生（约 8—10 岁）
@@ -39,16 +41,25 @@ book/
 tools/                     构建与检查工具
 tests/                     自动化测试
 comic/                     漫画分析、角色表、分镜和生成提示词
+dist/                      已校验的 EPUB 阅读版与校验值
 ```
 
 ## 构建与检查
 
 ```bash
+python3 -m pip install -r requirements.txt
 python3 tools/build_book.py
+python3 tools/build_epub.py
 python3 -m unittest discover -s tests
 ```
 
-构建结果输出到 `build/book.md`。章节增删和重排只需要修改 `book/book-manifest.json`。
+构建结果输出到 `build/book.md` 和 `build/ai-detective.epub`。EPUB 包含分章目录、稳定锚点、封面和内嵌高清插图，可在支持 EPUB 3 的阅读器中使用目录、书签和笔记功能。章节增删和重排只需要修改 `book/book-manifest.json`。
+
+发布前将校验通过的文件复制到 `dist/`，并用下面的命令核对下载文件：
+
+```bash
+shasum -a 256 -c dist/SHA256SUMS
+```
 
 ## 当前进度
 
@@ -61,4 +72,7 @@ python3 -m unittest discover -s tests
 
 ## 授权说明
 
-书稿、插画和代码的最终开源协议将在首次公开发布前确定。未经明确授权，请勿将未完成书稿用于商业出版。
+- 书稿、任务卡、插画和 EPUB： [CC BY-NC-SA 4.0](LICENSE-CONTENT.md)
+- 构建工具与测试代码：[MIT License](LICENSE-CODE)
+
+详细边界见 [LICENSE.md](LICENSE.md)。商业出版或付费课程需另行取得授权。
