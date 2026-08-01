@@ -87,6 +87,30 @@
       "part": "第三站 走进大模型",
       "title": "AI 为什么会一本正经地说错？",
       "path": "book/chapters/ch09-hallucinations.md"
+    },
+    {
+      "id": "ch10-robots-and-ai",
+      "type": "chapter",
+      "number": 10,
+      "part": "第四站 做负责任的 AI 小创造者",
+      "title": "机器人就是 AI 吗？",
+      "path": "book/chapters/ch10-robots-and-ai.md"
+    },
+    {
+      "id": "ch11-ai-safety",
+      "type": "chapter",
+      "number": 11,
+      "part": "第四站 做负责任的 AI 小创造者",
+      "title": "AI 世界的安全守则",
+      "path": "book/chapters/ch11-ai-safety.md"
+    },
+    {
+      "id": "ch12-campus-ai-invention",
+      "type": "chapter",
+      "number": 12,
+      "part": "第四站 做负责任的 AI 小创造者",
+      "title": "我们的校园 AI 小发明",
+      "path": "book/chapters/ch12-campus-ai-invention.md"
     }
   ]
 }
