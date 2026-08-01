@@ -63,6 +63,30 @@
       "part": "第二站 AI 的眼睛和耳朵",
       "title": "会说话、会画画的生成式 AI",
       "path": "book/chapters/ch06-generative-ai.md"
+    },
+    {
+      "id": "ch07-large-language-models",
+      "type": "chapter",
+      "number": 7,
+      "part": "第三站 走进大模型",
+      "title": "大语言模型的文字积木",
+      "path": "book/chapters/ch07-large-language-models.md"
+    },
+    {
+      "id": "ch08-asking-ai-clearly",
+      "type": "chapter",
+      "number": 8,
+      "part": "第三站 走进大模型",
+      "title": "怎样向 AI 问清楚？",
+      "path": "book/chapters/ch08-asking-ai-clearly.md"
+    },
+    {
+      "id": "ch09-hallucinations",
+      "type": "chapter",
+      "number": 9,
+      "part": "第三站 走进大模型",
+      "title": "AI 为什么会一本正经地说错？",
+      "path": "book/chapters/ch09-hallucinations.md"
     }
   ]
 }
