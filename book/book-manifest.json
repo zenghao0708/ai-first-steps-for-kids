@@ -39,6 +39,30 @@
       "part": "第一站 发现 AI",
       "title": "AI 也会答错",
       "path": "book/chapters/ch03-ai-makes-mistakes.md"
+    },
+    {
+      "id": "ch04-computer-vision",
+      "type": "chapter",
+      "number": 4,
+      "part": "第二站 AI 的眼睛和耳朵",
+      "title": "让机器看见：图像识别",
+      "path": "book/chapters/ch04-computer-vision.md"
+    },
+    {
+      "id": "ch05-speech-recognition",
+      "type": "chapter",
+      "number": 5,
+      "part": "第二站 AI 的眼睛和耳朵",
+      "title": "让机器听见：语音识别",
+      "path": "book/chapters/ch05-speech-recognition.md"
+    },
+    {
+      "id": "ch06-generative-ai",
+      "type": "chapter",
+      "number": 6,
+      "part": "第二站 AI 的眼睛和耳朵",
+      "title": "会说话、会画画的生成式 AI",
+      "path": "book/chapters/ch06-generative-ai.md"
     }
   ]
 }

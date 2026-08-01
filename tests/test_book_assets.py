@@ -58,7 +58,9 @@ class BookAssetTests(unittest.TestCase):
     def test_chapter_images_have_alt_text_and_exist(self) -> None:
         image_count = 0
         for chapter in sorted(CHAPTERS.glob("*.md")):
-            for alt_text, target in IMAGE_RE.findall(chapter.read_text(encoding="utf-8")):
+            chapter_images = IMAGE_RE.findall(chapter.read_text(encoding="utf-8"))
+            self.assertGreaterEqual(len(chapter_images), 2, f"每章至少需要两幅插画：{chapter.name}")
+            for alt_text, target in chapter_images:
                 image_count += 1
                 self.assertTrue(alt_text.strip(), f"图片缺少替代文本：{chapter}")
                 image = (chapter.parent / target).resolve()
