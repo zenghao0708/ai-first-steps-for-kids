@@ -14,7 +14,7 @@
 
 纸盒机器人方方亮起一盏小灯：“叮！侦探任务出现。”
 
-![小问和朵朵用相册搜索小狗，结果中混入一朵像狗的云，说明图像识别也会判断错误](../assets/illustrations/epub/ch01-01-photo-search.png)
+![小问和朵朵用相册搜索小狗，结果中混入一朵像狗的云，说明图像识别也会判断错误](../assets/illustrations/epub/ch01-01-photo-search.jpg)
 
 *图 1-1 相册找到了小狗，也把一朵狗形云猜成了小狗。*
 
@@ -26,7 +26,7 @@
 
 **输入 → 处理 → 输出**
 
-![声音、照片和文字作为输入，经过比较与计算，得到文字、推荐和判断等输出](../assets/illustrations/epub/ch01-02-input-process-output.png)
+![声音、照片和文字作为输入，经过比较与计算，得到文字、推荐和判断等输出](../assets/illustrations/epub/ch01-02-input-process-output.jpg)
 
 *图 1-2 用三个盒子观察智能工具：输入、处理和输出。*
 
@@ -64,7 +64,7 @@
 
 有些 AI 系统也会执行规则。不同的是，许多现代 AI 还会从大量数据中找规律，再用规律判断新情况。这个过程叫**机器学习**，我们会在下一章调查它。
 
-![电饭锅、自动门、计算器、语音输入、视频推荐和扫地机器人被放在侦探台上比较](../assets/illustrations/epub/ch01-03-automatic-machines.png)
+![电饭锅、自动门、计算器、语音输入、视频推荐和扫地机器人被放在侦探台上比较](../assets/illustrations/epub/ch01-03-automatic-machines.jpg)
 
 *图 1-3 自动工作的设备不一定使用 AI，要根据证据判断。*
 

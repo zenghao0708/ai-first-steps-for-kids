@@ -23,6 +23,22 @@
       "part": "第一站 发现 AI",
       "title": "AI 藏在哪里？",
       "path": "book/chapters/ch01-ai-around-us.md"
+    },
+    {
+      "id": "ch02-how-machines-learn",
+      "type": "chapter",
+      "number": 2,
+      "part": "第一站 发现 AI",
+      "title": "机器怎样学会分辨？",
+      "path": "book/chapters/ch02-how-machines-learn.md"
+    },
+    {
+      "id": "ch03-ai-makes-mistakes",
+      "type": "chapter",
+      "number": 3,
+      "part": "第一站 发现 AI",
+      "title": "AI 也会答错",
+      "path": "book/chapters/ch03-ai-makes-mistakes.md"
     }
   ]
 }
