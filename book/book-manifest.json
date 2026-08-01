@@ -1,0 +1,28 @@
+{
+  "title": "AI 小侦探",
+  "subtitle": "给三年级孩子的人工智能第一课",
+  "language": "zh-CN",
+  "audience": "小学三年级学生及其家长、教师",
+  "source_order": [
+    {
+      "id": "book-info",
+      "type": "front-matter",
+      "title": "书名页",
+      "path": "book/front-matter/00-book-info.md"
+    },
+    {
+      "id": "reading-guide",
+      "type": "front-matter",
+      "title": "欢迎加入 AI 小侦探队",
+      "path": "book/front-matter/01-reading-guide.md"
+    },
+    {
+      "id": "ch01-ai-around-us",
+      "type": "chapter",
+      "number": 1,
+      "part": "第一站 发现 AI",
+      "title": "AI 藏在哪里？",
+      "path": "book/chapters/ch01-ai-around-us.md"
+    }
+  ]
+}

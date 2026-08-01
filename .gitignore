@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+build/*
+!build/.gitkeep
+book/assets/illustrations/source/*.psd
+book/assets/illustrations/source/*.clip
