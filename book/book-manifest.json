@@ -111,6 +111,30 @@
       "part": "第四站 做负责任的 AI 小创造者",
       "title": "我们的校园 AI 小发明",
       "path": "book/chapters/ch12-campus-ai-invention.md"
+    },
+    {
+      "id": "glossary",
+      "type": "back-matter",
+      "title": "AI 小侦探词典",
+      "path": "book/back-matter/01-glossary.md"
+    },
+    {
+      "id": "task-cards",
+      "type": "back-matter",
+      "title": "12 张 AI 侦探任务卡",
+      "path": "book/back-matter/02-task-cards.md"
+    },
+    {
+      "id": "adult-guide",
+      "type": "back-matter",
+      "title": "家长与教师指南",
+      "path": "book/back-matter/03-adult-guide.md"
+    },
+    {
+      "id": "fact-checking",
+      "type": "back-matter",
+      "title": "事实核验与参考资料",
+      "path": "book/back-matter/04-fact-checking-and-references.md"
     }
   ]
 }
