@@ -1,7 +1,10 @@
 __pycache__/
 *.py[cod]
 .DS_Store
+.baoyu-skills/.env
 build/*
 !build/.gitkeep
 book/assets/illustrations/source/*.psd
 book/assets/illustrations/source/*.clip
+book/assets/illustrations/print/*.png
+comic/*/*.png
