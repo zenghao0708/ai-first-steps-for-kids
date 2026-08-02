@@ -31,6 +31,7 @@ character_reference: ../ai-around-us/characters/characters.png
 - 第三块：卡片进入简洁比较机器，齿轮调整几个刻度，不画大脑。
 - 第四块：一张从未出现过的切开苹果作为新题，输出卡有一个问号和一个正确对勾位置。
 - 细折线箭头尖端只接触边框，不进入内容区。
+- 四块顶部由 `tools/annotate_illustrations.py` 依次排入“训练样本”“观察特征”“训练调整”“新样本测试”。
 
 ## 第 3 页：只看红苹果
 

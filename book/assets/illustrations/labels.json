@@ -1,0 +1,121 @@
+[
+  {
+    "file": "ch01-01-photo-search.jpg",
+    "title": "相册搜索：识别也会出错",
+    "crop": [0, 0, 1, 0.8]
+  },
+  {
+    "file": "ch01-02-input-process-output.jpg",
+    "title": "输入 → 处理 → 输出"
+  },
+  {
+    "file": "ch01-03-automatic-machines.jpg",
+    "title": "自动运行不等于人工智能：比较固定规则与学习规律",
+    "overlays": [
+      {"text": "自动工作 = AI？", "x": 0.32, "y": 0.105, "max_width": 0.25, "font_ratio": 0.028}
+    ]
+  },
+  {
+    "file": "ch02-01-fruit-sorter.jpg",
+    "title": "从外观线索学习分类"
+  },
+  {
+    "file": "ch02-02-training-and-test.jpg",
+    "title": "训练样本 → 观察特征 → 训练调整 → 新样本测试",
+    "overlays": [
+      {"text": "训练样本", "x": 0.205, "y": 0.19, "max_width": 0.16, "font_ratio": 0.025},
+      {"text": "观察特征", "x": 0.425, "y": 0.19, "max_width": 0.16, "font_ratio": 0.025},
+      {"text": "训练调整", "x": 0.655, "y": 0.19, "max_width": 0.16, "font_ratio": 0.025},
+      {"text": "新样本测试", "x": 0.875, "y": 0.19, "max_width": 0.17, "font_ratio": 0.024}
+    ]
+  },
+  {
+    "file": "ch02-03-data-variety.jpg",
+    "title": "数据越多样，适用范围越广"
+  },
+  {
+    "file": "ch03-01-kite-mistake.jpg",
+    "title": "相似外观也会造成误判"
+  },
+  {
+    "file": "ch03-02-two-error-costs.jpg",
+    "title": "不同错误，影响不同"
+  },
+  {
+    "file": "ch03-03-error-notebook.jpg",
+    "title": "测试 → 记录错误 → 修正 → 再测试"
+  },
+  {
+    "file": "ch04-01-missing-cup.jpg",
+    "title": "角度、遮挡和外观变化会影响识别"
+  },
+  {
+    "file": "ch04-02-pixels-and-tasks.jpg",
+    "title": "像素 → 特征 → 视觉任务"
+  },
+  {
+    "file": "ch05-01-color-pencil-mishearing.jpg",
+    "title": "环境噪声会影响语音识别"
+  },
+  {
+    "file": "ch05-02-speech-pipeline.jpg",
+    "title": "声音 → 数字信号 → 图案匹配 → 文字"
+  },
+  {
+    "file": "ch06-01-cloud-whale.jpg",
+    "title": "生成内容不等于真实存在"
+  },
+  {
+    "file": "ch06-02-recognize-generate-check.jpg",
+    "title": "识别 → 生成 → 核验"
+  },
+  {
+    "file": "ch07-01-next-card.jpg",
+    "title": "根据上下文预测下一部分"
+  },
+  {
+    "file": "ch07-02-token-relay.jpg",
+    "title": "Token → 上下文 → 概率计算 → 逐步生成",
+    "crop": [0, 0.055, 1, 1]
+  },
+  {
+    "file": "ch08-01-make-one.jpg",
+    "title": "任务越明确，结果越可用"
+  },
+  {
+    "file": "ch08-02-task-card-iteration.jpg",
+    "title": "任务 + 背景 + 边界 + 输出形式"
+  },
+  {
+    "file": "ch09-01-rainbow-pterosaur.jpg",
+    "title": "看似完整的回答也可能是编造"
+  },
+  {
+    "file": "ch09-02-five-step-check.jpg",
+    "title": "停一下 → 圈事实 → 查来源 → 做对照 → 问大人"
+  },
+  {
+    "file": "ch10-01-stuck-at-chair.jpg",
+    "title": "固定规则遇到新情况会卡住"
+  },
+  {
+    "file": "ch10-02-sense-decide-act.jpg",
+    "title": "感知 → 决定 → 行动"
+  },
+  {
+    "file": "ch11-01-suspicious-voice.jpg",
+    "title": "可疑声音 → 停一下 → 换渠道确认"
+  },
+  {
+    "file": "ch11-02-safety-map.jpg",
+    "title": "停一下 → 查一查 → 问大人"
+  },
+  {
+    "file": "ch12-01-small-problem.jpg",
+    "title": "先缩小问题，再比较方案"
+  },
+  {
+    "file": "ch12-02-project-board.jpg",
+    "title": "从发现问题到展示限制的完整项目流程"
+  }
+]

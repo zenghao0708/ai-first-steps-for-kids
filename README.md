@@ -35,6 +35,7 @@ book/
     storyboards/           漫画分镜
     prompts/               插画生成提示词
     illustrations/
+      base/                无标注底图，供脚本重复生成成品
       source/              可编辑高清源文件（默认不提交大型工程文件）
       print/               印刷用图片
       epub/                电子书优化图片
@@ -48,12 +49,13 @@ dist/                      已校验的 EPUB 阅读版与校验值
 
 ```bash
 python3 -m pip install -r requirements.txt
+python3 tools/annotate_illustrations.py
 python3 tools/build_book.py
 python3 tools/build_epub.py
 python3 -m unittest discover -s tests
 ```
 
-构建结果输出到 `build/book.md` 和 `build/ai-detective.epub`。EPUB 包含分章目录、稳定锚点、封面和内嵌高清插图，可在支持 EPUB 3 的阅读器中使用目录、书签和笔记功能。章节增删和重排只需要修改 `book/book-manifest.json`。
+插图说明集中维护在 `book/assets/illustrations/labels.json`。标注脚本从 `base/` 底图生成印刷 PNG 和 EPUB JPEG，因此可以重复运行；自动找不到中文字体时，可通过 `BOOK_CJK_FONT=/path/to/font.ttc` 指定字体。构建结果输出到 `build/book.md` 和 `build/ai-detective.epub`。EPUB 包含分章目录、稳定锚点、封面和内嵌高清插图，可在支持 EPUB 3 的阅读器中使用目录、书签和笔记功能。章节增删和重排只需要修改 `book/book-manifest.json`。
 
 发布前将校验通过的文件复制到 `dist/`，并用下面的命令核对下载文件：
 

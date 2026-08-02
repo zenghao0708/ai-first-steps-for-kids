@@ -24,11 +24,14 @@
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python tools/annotate_illustrations.py
 .venv/bin/python tools/build_book.py
 .venv/bin/python tools/build_epub.py
 .venv/bin/python tools/build_epub.py --validate build/ai-detective.epub
 .venv/bin/python -m unittest discover -s tests -v
 ```
+
+修改插图说明时，编辑 `book/assets/illustrations/labels.json`，不要直接在成品图上反复叠字。标注脚本会从 `book/assets/illustrations/base/` 重新生成印刷版和 EPUB 版图片。
 
 提交前运行 `git diff --check`，并检查暂存区中没有 `.env`、令牌、密码、Cookie、会话文件、缓存、依赖目录和儿童个人资料。
 

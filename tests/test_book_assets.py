@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 import unittest
 from pathlib import Path
@@ -8,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CHAPTERS = ROOT / "book" / "chapters"
 IMAGE_RE = re.compile(r"!\[([^\]]+)]\(([^)]+)\)")
+CHINESE_RE = re.compile(r"[\u4e00-\u9fff]")
 
 
 JPEG_START_OF_FRAME_MARKERS = {
@@ -73,6 +75,22 @@ class BookAssetTests(unittest.TestCase):
         for image in images:
             width, height = read_jpeg_size(image)
             self.assertGreaterEqual(width, 2000, f"图片宽度不足：{image} ({width}×{height})")
+
+    def test_every_chapter_image_has_a_chinese_annotation(self) -> None:
+        manifest_path = ROOT / "book" / "assets" / "illustrations" / "labels.json"
+        entries = json.loads(manifest_path.read_text(encoding="utf-8"))
+        annotations = {entry["file"]: entry["title"] for entry in entries}
+
+        referenced: set[str] = set()
+        for chapter in sorted(CHAPTERS.glob("*.md")):
+            for _, target in IMAGE_RE.findall(chapter.read_text(encoding="utf-8")):
+                referenced.add(Path(target).name)
+
+        self.assertEqual(referenced, set(annotations), "插图中文说明清单与正文引用不一致")
+        for filename, title in annotations.items():
+            self.assertRegex(title, CHINESE_RE, f"插图说明缺少中文：{filename}")
+            base = ROOT / "book" / "assets" / "illustrations" / "base" / filename
+            self.assertTrue(base.is_file(), f"缺少可重复生成的插图底图：{base}")
 
 
 if __name__ == "__main__":

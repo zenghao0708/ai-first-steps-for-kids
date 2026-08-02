@@ -14,6 +14,7 @@
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python tools/annotate_illustrations.py
 .venv/bin/python tools/build_book.py
 .venv/bin/python tools/build_epub.py
 .venv/bin/python tools/build_epub.py --validate build/ai-detective.epub
@@ -22,15 +23,15 @@ git diff --check
 shasum -a 256 -c dist/SHA256SUMS
 ```
 
-## 2026-08-01 实测结果
+## 2026-08-02 实测结果
 
 - [x] Markdown 构建：18 个源文件，约 4.6 万字符。
 - [x] EPUB 构建：18 个源文件、28 幅图片、53 个包内文件。
 - [x] EPUB 结构：mimetype、container、OPF、spine、nav、NCX、资源引用和 XML 解析通过。
-- [x] 自动测试：10 项通过。
+- [x] 自动测试：11 项通过，包含 27 幅章节插图与中文标注清单的一致性检查。
 - [x] 可复现性：连续两次构建的 EPUB 二进制一致。
-- [x] 桌面视觉检查：封面、目录、第 10 章正文和两幅流程图加载正常。
-- [x] 390px 移动视觉检查：第 11 章无横向溢出，两幅 2000px 图片加载完成，中文标签可读。
+- [x] 插图视觉检查：27 幅正文插图逐张检查，标题、图内补充标签和原有中文均可读且未溢出。
+- [x] EPUB 图片检查：包内 27 幅正文插图和 1 幅封面均与构建源文件逐字节一致，中文标注正常嵌入。
 - [x] 敏感文件检查：暂存区不包含 `.env`、凭据、会话、缓存和依赖目录。
 
 ## 发布人工门槛
