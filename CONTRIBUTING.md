@@ -1,40 +1,54 @@
 # 参与贡献
 
-本项目欢迎事实勘误、语言改进、无障碍建议、任务卡反馈和构建修复。贡献内容不得包含儿童个人信息、账号凭据、未公开学校资料或无权使用的图片。
+本项目欢迎事实勘误、语言改进、无障碍建议、课堂反馈和构建修复。贡献不得包含儿童个人信息、账号凭据、未公开学校资料或无权使用的图片。
 
 ## 修改一章
 
-1. 在 `book/chapters/` 中编辑对应 Markdown。
-2. 保留漫画开场、AI 侦探任务、动手试一试、侦探笔记和给大人的话。
-3. 新术语第一次出现时解释含义，避免把 AI 拟人化。
-4. 图片使用 2000×1500 阅读版 JPEG，提供说明知识的替代文本。
-5. 图内关键流程配准确短中文，箭头尖端只接触模块边框。
+1. 选择 `books/grade-3` 至 `books/grade-6` 中的目标分册。
+2. 在该册 `chapters/` 编辑 Markdown，并遵守本册 `STYLE_GUIDE.md`。
+3. 新术语首次出现时解释，图片提供有知识含义的中文替代文本。
+4. 图内节点使用准确短中文，箭头尖端只接触模块边框。
+5. 活动默认使用虚构数据，高风险动作必须有停止或人工确认。
 
-## 新增、删除或调整章节
+## 增删和调整章节
 
-所有阅读顺序由 `book/book-manifest.json` 管理。
+阅读顺序由每册 `book-manifest.json` 的 `source_order` 管理。
 
-- **新增**：创建章节文件，再向 `source_order` 添加唯一 `id`、章节号、单元、标题和路径。
-- **删除**：从 `source_order` 移除条目，再删除不再使用的正文与资源。
-- **调整**：移动条目并更新章节号、图号和正文交叉引用。
-- **改标题**：优先保留稳定 `id`，这样 EPUB 文件名和外部链接不会无故改变。
+- **新增**：创建章节文件，再添加唯一 `id`、章节号、单元、标题和相对路径。
+- **删除**：移除清单条目，再删除不再使用的正文与资源。
+- **调整**：移动清单条目并更新章节号、图号和交叉引用。
+- **改标题**：优先保留稳定 `id`，避免 EPUB 锚点无故改变。
+
+## 插图维护
+
+四至六年级知识图的结构与中文节点在 `assets/illustrations/visuals.json`，顶部标题在 `labels.json`。先生成无标题底图，再从底图生成 EPUB JPEG 与本地印刷 PNG。
+
+```bash
+.venv/bin/python tools/generate_series_visuals.py --book-root books/grade-6
+.venv/bin/python tools/annotate_illustrations.py --book-root books/grade-6
+```
+
+不要直接在成品图上反复叠字。逐张检查文字是否完整、连接线是否穿过节点、箭头是否进入文字框以及小尺寸阅读是否清楚。
 
 ## 本地检查
 
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python tools/annotate_illustrations.py
-.venv/bin/python tools/build_book.py
-.venv/bin/python tools/build_epub.py
-.venv/bin/python tools/build_epub.py --validate build/ai-detective.epub
+.venv/bin/python tools/build_series.py
 .venv/bin/python -m unittest discover -s tests -v
+git diff --check
 ```
 
-修改插图说明时，编辑 `book/assets/illustrations/labels.json`，不要直接在成品图上反复叠字。标注脚本会从 `book/assets/illustrations/base/` 重新生成印刷版和 EPUB 版图片。
+发布维护者还需执行：
 
-提交前运行 `git diff --check`，并检查暂存区中没有 `.env`、令牌、密码、Cookie、会话文件、缓存、依赖目录和儿童个人资料。
+```bash
+.venv/bin/python tools/build_series.py --publish
+.venv/bin/python tools/build_series.py --verify-dist
+```
+
+提交前检查暂存区没有 `.env`、令牌、密码、Cookie、会话、缓存、依赖目录、真实账号配置和儿童个人资料。
 
 ## 勘误格式
 
-请提供版本或提交号、章节、原句、问题类型、可靠证据和建议改法。涉及安全问题时，不要在公开 Issue 中披露可被利用的细节。
+请提供提交号、年级、章节、原句、问题类型、可靠证据和建议改法。涉及安全问题时，不要在公开 Issue 中披露可被利用的细节。

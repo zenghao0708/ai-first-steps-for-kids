@@ -1,0 +1,147 @@
+{
+  "title": "AI 小侦探",
+  "subtitle": "给三年级孩子的人工智能第一课",
+  "slug": "ai-detective-grade-3",
+  "grade": 3,
+  "cover": "assets/cover/cover.jpg",
+  "language": "zh-CN",
+  "creator": "zenghao0708",
+  "publisher": "AI 小侦探开源项目",
+  "rights": "书稿与插画采用 CC BY-NC-SA 4.0；构建代码采用 MIT License",
+  "modified": "2026-08-01T00:00:00Z",
+  "audience": "小学三年级学生及其家长、教师",
+  "source_order": [
+    {
+      "id": "book-info",
+      "type": "front-matter",
+      "title": "书名页",
+      "path": "front-matter/00-book-info.md"
+    },
+    {
+      "id": "reading-guide",
+      "type": "front-matter",
+      "title": "欢迎加入 AI 小侦探队",
+      "path": "front-matter/01-reading-guide.md"
+    },
+    {
+      "id": "ch01-ai-around-us",
+      "type": "chapter",
+      "number": 1,
+      "part": "第一站 发现 AI",
+      "title": "AI 藏在哪里？",
+      "path": "chapters/ch01-ai-around-us.md"
+    },
+    {
+      "id": "ch02-how-machines-learn",
+      "type": "chapter",
+      "number": 2,
+      "part": "第一站 发现 AI",
+      "title": "机器怎样学会分辨？",
+      "path": "chapters/ch02-how-machines-learn.md"
+    },
+    {
+      "id": "ch03-ai-makes-mistakes",
+      "type": "chapter",
+      "number": 3,
+      "part": "第一站 发现 AI",
+      "title": "AI 也会答错",
+      "path": "chapters/ch03-ai-makes-mistakes.md"
+    },
+    {
+      "id": "ch04-computer-vision",
+      "type": "chapter",
+      "number": 4,
+      "part": "第二站 AI 的眼睛和耳朵",
+      "title": "让机器看见：图像识别",
+      "path": "chapters/ch04-computer-vision.md"
+    },
+    {
+      "id": "ch05-speech-recognition",
+      "type": "chapter",
+      "number": 5,
+      "part": "第二站 AI 的眼睛和耳朵",
+      "title": "让机器听见：语音识别",
+      "path": "chapters/ch05-speech-recognition.md"
+    },
+    {
+      "id": "ch06-generative-ai",
+      "type": "chapter",
+      "number": 6,
+      "part": "第二站 AI 的眼睛和耳朵",
+      "title": "会说话、会画画的生成式 AI",
+      "path": "chapters/ch06-generative-ai.md"
+    },
+    {
+      "id": "ch07-large-language-models",
+      "type": "chapter",
+      "number": 7,
+      "part": "第三站 走进大模型",
+      "title": "大语言模型的文字积木",
+      "path": "chapters/ch07-large-language-models.md"
+    },
+    {
+      "id": "ch08-asking-ai-clearly",
+      "type": "chapter",
+      "number": 8,
+      "part": "第三站 走进大模型",
+      "title": "怎样向 AI 问清楚？",
+      "path": "chapters/ch08-asking-ai-clearly.md"
+    },
+    {
+      "id": "ch09-hallucinations",
+      "type": "chapter",
+      "number": 9,
+      "part": "第三站 走进大模型",
+      "title": "AI 为什么会一本正经地说错？",
+      "path": "chapters/ch09-hallucinations.md"
+    },
+    {
+      "id": "ch10-robots-and-ai",
+      "type": "chapter",
+      "number": 10,
+      "part": "第四站 做负责任的 AI 小创造者",
+      "title": "机器人就是 AI 吗？",
+      "path": "chapters/ch10-robots-and-ai.md"
+    },
+    {
+      "id": "ch11-ai-safety",
+      "type": "chapter",
+      "number": 11,
+      "part": "第四站 做负责任的 AI 小创造者",
+      "title": "AI 世界的安全守则",
+      "path": "chapters/ch11-ai-safety.md"
+    },
+    {
+      "id": "ch12-campus-ai-invention",
+      "type": "chapter",
+      "number": 12,
+      "part": "第四站 做负责任的 AI 小创造者",
+      "title": "我们的校园 AI 小发明",
+      "path": "chapters/ch12-campus-ai-invention.md"
+    },
+    {
+      "id": "glossary",
+      "type": "back-matter",
+      "title": "AI 小侦探词典",
+      "path": "back-matter/01-glossary.md"
+    },
+    {
+      "id": "task-cards",
+      "type": "back-matter",
+      "title": "12 张 AI 侦探任务卡",
+      "path": "back-matter/02-task-cards.md"
+    },
+    {
+      "id": "adult-guide",
+      "type": "back-matter",
+      "title": "家长与教师指南",
+      "path": "back-matter/03-adult-guide.md"
+    },
+    {
+      "id": "fact-checking",
+      "type": "back-matter",
+      "title": "事实核验与参考资料",
+      "path": "back-matter/04-fact-checking-and-references.md"
+    }
+  ]
+}

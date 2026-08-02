@@ -5,8 +5,8 @@ __pycache__/
 .baoyu-skills/.env
 build/*
 !build/.gitkeep
-book/assets/cover/source/*.png
-book/assets/illustrations/source/*.psd
-book/assets/illustrations/source/*.clip
-book/assets/illustrations/print/*.png
-comic/*/*.png
+books/*/assets/cover/source/*.png
+books/*/assets/illustrations/source/*.psd
+books/*/assets/illustrations/source/*.clip
+books/*/assets/illustrations/print/*.png
+books/*/comic/*/*.png

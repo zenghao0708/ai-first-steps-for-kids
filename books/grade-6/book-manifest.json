@@ -1,0 +1,38 @@
+{
+  "title": "AI 系统设计师",
+  "subtitle": "给六年级孩子的智能体、端侧 AI 与责任设计课",
+  "slug": "ai-system-designer-grade-6",
+  "grade": 6,
+  "language": "zh-CN",
+  "creator": "zenghao0708",
+  "publisher": "AI 小侦探开源项目",
+  "rights": "书稿与插画采用 CC BY-NC-SA 4.0；构建代码采用 MIT License",
+  "modified": "2026-08-02T00:00:00Z",
+  "audience": "小学六年级学生及其家长、教师",
+  "cover": "assets/cover/cover.jpg",
+  "cover_topics": ["预训练", "工具调用", "智能体", "端侧 AI", "红队测试", "责任治理"],
+  "chapter_requirements": {
+    "minimum_characters": 1250,
+    "required_phrases": ["漫画开场", "系统任务", "压力测试", "设计师笔记", "给大人的话"]
+  },
+  "source_order": [
+    {"id": "book-info", "type": "front-matter", "title": "书名页", "path": "front-matter/00-book-info.md"},
+    {"id": "reading-guide", "type": "front-matter", "title": "欢迎加入 AI 系统设计室", "path": "front-matter/01-reading-guide.md"},
+    {"id": "ch01-pretraining-finetuning-context", "type": "chapter", "number": 1, "part": "第一站 模型能力从哪里来", "title": "预训练、微调与上下文学习", "path": "chapters/ch01-pretraining-finetuning-context.md"},
+    {"id": "ch02-training-and-inference", "type": "chapter", "number": 2, "part": "第一站 模型能力从哪里来", "title": "训练和推理的两种现场", "path": "chapters/ch02-training-and-inference.md"},
+    {"id": "ch03-context-and-memory", "type": "chapter", "number": 3, "part": "第一站 模型能力从哪里来", "title": "上下文窗口不是永久记忆", "path": "chapters/ch03-context-and-memory.md"},
+    {"id": "ch04-tool-calling", "type": "chapter", "number": 4, "part": "第二站 从模型到智能体", "title": "AI 怎样使用工具", "path": "chapters/ch04-tool-calling.md"},
+    {"id": "ch05-ai-agents", "type": "chapter", "number": 5, "part": "第二站 从模型到智能体", "title": "从回答者到智能体", "path": "chapters/ch05-ai-agents.md"},
+    {"id": "ch06-multi-agent", "type": "chapter", "number": 6, "part": "第二站 从模型到智能体", "title": "多智能体一定更好吗", "path": "chapters/ch06-multi-agent.md"},
+    {"id": "ch07-on-device-ai", "type": "chapter", "number": 7, "part": "第三站 设计可靠 AI 系统", "title": "云端还是设备端", "path": "chapters/ch07-on-device-ai.md"},
+    {"id": "ch08-reliable-rag", "type": "chapter", "number": 8, "part": "第三站 设计可靠 AI 系统", "title": "把知识助手做可靠", "path": "chapters/ch08-reliable-rag.md"},
+    {"id": "ch09-red-teaming", "type": "chapter", "number": 9, "part": "第三站 设计可靠 AI 系统", "title": "给 AI 做压力测试", "path": "chapters/ch09-red-teaming.md"},
+    {"id": "ch10-human-oversight", "type": "chapter", "number": 10, "part": "第四站 为真实世界负责", "title": "谁为结果负责", "path": "chapters/ch10-human-oversight.md"},
+    {"id": "ch11-ai-and-society", "type": "chapter", "number": 11, "part": "第四站 为真实世界负责", "title": "AI 与社会的长期选择", "path": "chapters/ch11-ai-and-society.md"},
+    {"id": "ch12-responsible-ai-system", "type": "chapter", "number": 12, "part": "第四站 为真实世界负责", "title": "负责任 AI 系统答辩", "path": "chapters/ch12-responsible-ai-system.md"},
+    {"id": "glossary", "type": "back-matter", "title": "AI 系统词典", "path": "back-matter/01-glossary.md"},
+    {"id": "task-cards", "type": "back-matter", "title": "12 张系统设计任务卡", "path": "back-matter/02-task-cards.md"},
+    {"id": "adult-guide", "type": "back-matter", "title": "家长与教师指南", "path": "back-matter/03-adult-guide.md"},
+    {"id": "fact-checking", "type": "back-matter", "title": "事实核验与参考资料", "path": "back-matter/04-fact-checking-and-references.md"}
+  ]
+}

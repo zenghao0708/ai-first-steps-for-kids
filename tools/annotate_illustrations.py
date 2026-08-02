@@ -10,11 +10,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSET_ROOT = ROOT / "book" / "assets" / "illustrations"
-BASE_DIR = ASSET_ROOT / "base"
-EPUB_DIR = ASSET_ROOT / "epub"
-PRINT_DIR = ASSET_ROOT / "print"
-MANIFEST_PATH = ASSET_ROOT / "labels.json"
+DEFAULT_BOOK_ROOT = ROOT / "books" / "grade-3"
 
 FONT_CANDIDATES = (
     Path("/System/Library/Fonts/STHeiti Medium.ttc"),
@@ -26,10 +22,10 @@ FONT_CANDIDATES = (
 )
 
 
-def load_manifest() -> list[dict[str, Any]]:
-    entries = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+def load_manifest(manifest_path: Path) -> list[dict[str, Any]]:
+    entries = json.loads(manifest_path.read_text(encoding="utf-8"))
     if not isinstance(entries, list) or not entries:
-        raise ValueError(f"插图文字清单为空：{MANIFEST_PATH}")
+        raise ValueError(f"插图文字清单为空：{manifest_path}")
     return entries
 
 
@@ -148,13 +144,18 @@ def render_variant(
     return canvas
 
 
-def bootstrap_base(entries: list[dict[str, Any]], overwrite: bool) -> None:
-    BASE_DIR.mkdir(parents=True, exist_ok=True)
+def bootstrap_base(
+    entries: list[dict[str, Any]],
+    base_dir: Path,
+    print_dir: Path,
+    overwrite: bool,
+) -> None:
+    base_dir.mkdir(parents=True, exist_ok=True)
     for entry in entries:
-        output = BASE_DIR / entry["file"]
+        output = base_dir / entry["file"]
         if output.exists() and not overwrite:
             continue
-        source = PRINT_DIR / Path(entry["file"]).with_suffix(".png")
+        source = print_dir / Path(entry["file"]).with_suffix(".png")
         if not source.is_file():
             raise FileNotFoundError(f"缺少高清插图源文件：{source}")
         with Image.open(source) as image:
@@ -162,11 +163,17 @@ def bootstrap_base(entries: list[dict[str, Any]], overwrite: bool) -> None:
         print(f"已建立无说明文字底图：{output.relative_to(ROOT)}")
 
 
-def annotate(entries: list[dict[str, Any]], font_path: Path) -> None:
-    EPUB_DIR.mkdir(parents=True, exist_ok=True)
-    PRINT_DIR.mkdir(parents=True, exist_ok=True)
+def annotate(
+    entries: list[dict[str, Any]],
+    font_path: Path,
+    base_dir: Path,
+    epub_dir: Path,
+    print_dir: Path,
+) -> None:
+    epub_dir.mkdir(parents=True, exist_ok=True)
+    print_dir.mkdir(parents=True, exist_ok=True)
     for entry in entries:
-        source_path = BASE_DIR / entry["file"]
+        source_path = base_dir / entry["file"]
         if not source_path.is_file():
             raise FileNotFoundError(
                 f"缺少底图：{source_path}。首次运行请先加 --bootstrap-base。"
@@ -177,17 +184,23 @@ def annotate(entries: list[dict[str, Any]], font_path: Path) -> None:
         source = apply_overlays(source, entry.get("overlays", []), font_path)
 
         print_image = render_variant(source, entry["title"], (2400, 1800), font_path)
-        print_path = PRINT_DIR / Path(entry["file"]).with_suffix(".png")
+        print_path = print_dir / Path(entry["file"]).with_suffix(".png")
         print_image.save(print_path, "PNG", optimize=True)
 
         epub_image = render_variant(source, entry["title"], (2000, 1500), font_path)
-        epub_path = EPUB_DIR / entry["file"]
+        epub_path = epub_dir / entry["file"]
         epub_image.save(epub_path, "JPEG", quality=92, optimize=True, progressive=True)
         print(f"已标注：{epub_path.relative_to(ROOT)}")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="为全书插图确定性添加中文说明文字")
+    parser.add_argument(
+        "--book-root",
+        type=Path,
+        default=DEFAULT_BOOK_ROOT,
+        help="包含 assets/illustrations 的分册目录",
+    )
     parser.add_argument("--font", help="支持简体中文的 TTF/TTC 字体路径")
     parser.add_argument(
         "--bootstrap-base",
@@ -204,11 +217,15 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    entries = load_manifest()
+    asset_root = args.book_root.resolve() / "assets" / "illustrations"
+    base_dir = asset_root / "base"
+    epub_dir = asset_root / "epub"
+    print_dir = asset_root / "print"
+    entries = load_manifest(asset_root / "labels.json")
     if args.bootstrap_base:
-        bootstrap_base(entries, overwrite=args.overwrite_base)
+        bootstrap_base(entries, base_dir, print_dir, overwrite=args.overwrite_base)
     font_path = find_font(args.font)
-    annotate(entries, font_path)
+    annotate(entries, font_path, base_dir, epub_dir, print_dir)
     print(f"完成：{len(entries)} 幅插图，字体 {font_path}")
 
 

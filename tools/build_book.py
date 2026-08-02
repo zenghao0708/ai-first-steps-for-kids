@@ -7,14 +7,16 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_MANIFEST = ROOT / "book" / "book-manifest.json"
-DEFAULT_OUTPUT = ROOT / "build" / "book.md"
+DEFAULT_BOOK_ROOT = ROOT / "books" / "grade-3"
+DEFAULT_MANIFEST = DEFAULT_BOOK_ROOT / "book-manifest.json"
+DEFAULT_OUTPUT = ROOT / "build" / "ai-detective-grade-3.md"
 IMAGE_RE = re.compile(r"!\[[^\]]*]\(([^)]+)\)")
 
 
 def load_sources(manifest_path: Path) -> tuple[dict, list[Path]]:
     repository_root = ROOT.resolve()
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    book_root = manifest_path.resolve().parent
     items = manifest.get("source_order")
     if not isinstance(items, list) or not items:
         raise ValueError("source_order 必须是非空列表")
@@ -35,7 +37,7 @@ def load_sources(manifest_path: Path) -> tuple[dict, list[Path]]:
         if not isinstance(relative_path, str) or not relative_path:
             raise ValueError(f"章节 {item_id} 缺少 path")
 
-        source = (repository_root / relative_path).resolve()
+        source = (book_root / relative_path).resolve()
         try:
             source.relative_to(repository_root)
         except ValueError as exc:
@@ -87,9 +89,11 @@ def build_book(manifest_path: Path, output_path: Path) -> dict[str, int | str]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="按 manifest 合并并检查少儿 AI 书稿")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    result = build_book(args.manifest, args.output)
+    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
+    output = args.output or ROOT / "build" / f"{manifest.get('slug', 'book')}.md"
+    result = build_book(args.manifest, output)
     print(
         f"已构建 {result['sources']} 个源文件，共 {result['characters']} 个字符：{result['output']}"
     )

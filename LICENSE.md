@@ -4,7 +4,7 @@
 
 ## 书稿与插画
 
-`book/`、`comic/`、`dist/` 以及 README 中的原创教育内容，采用 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)（CC BY-NC-SA 4.0）许可。
+`books/`、`series/`、`dist/` 以及 README 中的原创教育内容，采用 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)（CC BY-NC-SA 4.0）许可。
 
 你可以在遵守署名、非商业和相同方式共享条件的前提下复制、传播与改编。完整说明见 [LICENSE-CONTENT.md](LICENSE-CONTENT.md) 和 Creative Commons 官方法律文本。
 

@@ -1,0 +1,38 @@
+{
+  "title": "AI 模型训练营",
+  "subtitle": "给五年级孩子的模型、检索与大模型应用课",
+  "slug": "ai-model-lab-grade-5",
+  "grade": 5,
+  "language": "zh-CN",
+  "creator": "zenghao0708",
+  "publisher": "AI 小侦探开源项目",
+  "rights": "书稿与插画采用 CC BY-NC-SA 4.0；构建代码采用 MIT License",
+  "modified": "2026-08-02T00:00:00Z",
+  "audience": "小学五年级学生及其家长、教师",
+  "cover": "assets/cover/cover.jpg",
+  "cover_topics": ["向量表示", "神经网络", "注意力", "语义检索", "RAG", "多模态"],
+  "chapter_requirements": {
+    "minimum_characters": 1500,
+    "required_phrases": ["漫画开场", "训练营挑战", "动手试一试", "模型笔记", "给大人的话"]
+  },
+  "source_order": [
+    {"id": "book-info", "type": "front-matter", "title": "书名页", "path": "front-matter/00-book-info.md"},
+    {"id": "reading-guide", "type": "front-matter", "title": "欢迎来到 AI 模型训练营", "path": "front-matter/01-reading-guide.md"},
+    {"id": "ch01-ai-turning-points", "type": "chapter", "number": 1, "part": "第一站 模型怎样学习", "title": "AI 的几次重要转弯", "path": "chapters/ch01-ai-turning-points.md"},
+    {"id": "ch02-models-and-boundaries", "type": "chapter", "number": 2, "part": "第一站 模型怎样学习", "title": "模型是现实的简化", "path": "chapters/ch02-models-and-boundaries.md"},
+    {"id": "ch03-vectors", "type": "chapter", "number": 3, "part": "第一站 模型怎样学习", "title": "用数字表示信息", "path": "chapters/ch03-vectors.md"},
+    {"id": "ch04-neural-networks", "type": "chapter", "number": 4, "part": "第二站 走进大模型内部", "title": "神经网络怎样调整", "path": "chapters/ch04-neural-networks.md"},
+    {"id": "ch05-attention-transformers", "type": "chapter", "number": 5, "part": "第二站 走进大模型内部", "title": "注意力在关注什么", "path": "chapters/ch05-attention-transformers.md"},
+    {"id": "ch06-embeddings", "type": "chapter", "number": 6, "part": "第二站 走进大模型内部", "title": "把意思放进坐标", "path": "chapters/ch06-embeddings.md"},
+    {"id": "ch07-rag", "type": "chapter", "number": 7, "part": "第三站 让模型连接资料", "title": "先查资料再回答", "path": "chapters/ch07-rag.md"},
+    {"id": "ch08-multimodal", "type": "chapter", "number": 8, "part": "第三站 让模型连接资料", "title": "文字、图片和声音一起工作", "path": "chapters/ch08-multimodal.md"},
+    {"id": "ch09-structured-output", "type": "chapter", "number": 9, "part": "第三站 让模型连接资料", "title": "让输出可以被程序使用", "path": "chapters/ch09-structured-output.md"},
+    {"id": "ch10-evaluation-metrics", "type": "chapter", "number": 10, "part": "第四站 评测与负责任应用", "title": "不只看正确率", "path": "chapters/ch10-evaluation-metrics.md"},
+    {"id": "ch11-provenance-identity", "type": "chapter", "number": 11, "part": "第四站 评测与负责任应用", "title": "作品、来源与数字身份", "path": "chapters/ch11-provenance-identity.md"},
+    {"id": "ch12-campus-knowledge-assistant", "type": "chapter", "number": 12, "part": "第四站 评测与负责任应用", "title": "校园知识助手", "path": "chapters/ch12-campus-knowledge-assistant.md"},
+    {"id": "glossary", "type": "back-matter", "title": "AI 模型词典", "path": "back-matter/01-glossary.md"},
+    {"id": "task-cards", "type": "back-matter", "title": "12 张训练营实验卡", "path": "back-matter/02-task-cards.md"},
+    {"id": "adult-guide", "type": "back-matter", "title": "家长与教师指南", "path": "back-matter/03-adult-guide.md"},
+    {"id": "fact-checking", "type": "back-matter", "title": "事实核验与参考资料", "path": "back-matter/04-fact-checking-and-references.md"}
+  ]
+}

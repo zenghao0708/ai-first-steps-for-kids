@@ -1,80 +1,86 @@
-# AI 小侦探
+# AI 小侦探开源课程系列
 
-给三年级孩子的人工智能第一课。
+面向小学三至六年级的人工智能启蒙与进阶课程。四册沿同一组校园角色螺旋上升：从观察 AI 现象与安全习惯，逐步进入数据、模型、RAG、智能体、端侧 AI、系统评测和责任设计。
 
-这是一本正在创作中的少儿 AI 科普书。它用校园、家庭和游戏中的故事，解释人工智能、机器学习、数据、图像识别、语音识别、生成式 AI、大语言模型、机器人以及 AI 安全等基础概念。
+## 下载电子书
 
-**电子书**：[下载 EPUB 阅读版](https://github.com/zenghao0708/ai-first-steps-for-kids/raw/main/dist/ai-detective.epub) · [SHA-256 校验值](dist/SHA256SUMS)
+| 年级 | 书名 | 学习主线 | EPUB |
+| --- | --- | --- | --- |
+| 三年级 | 《AI 小侦探》 | 感知 AI、机器学习、生成式 AI、核验与安全 | [下载](https://github.com/zenghao0708/ai-first-steps-for-kids/raw/main/dist/grade-3/ai-detective-grade-3.epub) |
+| 四年级 | 《AI 小工程师》 | 数据清理、特征、规则、决策树、测试与公平 | [下载](https://github.com/zenghao0708/ai-first-steps-for-kids/raw/main/dist/grade-4/ai-engineer-grade-4.epub) |
+| 五年级 | 《AI 模型训练营》 | 向量、神经网络、注意力、RAG、多模态与评测 | [下载](https://github.com/zenghao0708/ai-first-steps-for-kids/raw/main/dist/grade-5/ai-model-lab-grade-5.epub) |
+| 六年级 | 《AI 系统设计师》 | 工具调用、智能体、端侧 AI、红队与责任治理 | [下载](https://github.com/zenghao0708/ai-first-steps-for-kids/raw/main/dist/grade-6/ai-system-designer-grade-6.epub) |
 
-## 读者
+文件校验值见 [dist/SHA256SUMS](dist/SHA256SUMS)。EPUB 3 阅读版包含分章目录、稳定锚点、封面和内嵌高清中文插图，支持阅读器中的目录、书签和笔记功能。
 
-- 主要读者：小学三年级学生（约 8—10 岁）
-- 共读者：家长、信息科技教师和科学教师
-- 阅读前提：能独立阅读常见汉字，不要求数学或编程基础
+旧的三年级下载地址 `dist/ai-detective.epub` 作为兼容别名继续保留，内容与三年级目录中的文件完全一致。
 
-## 内容原则
+## 课程阶梯
 
-- 先讲生活问题，再讲技术名字。
-- 一次只解释一个关键概念。
-- 用故事、比喻和动手实验帮助理解，但明确说明比喻的边界。
-- 不把 AI 写成“会思考的人”，也不暗示它永远正确。
-- 每章至少配一幅承担解释任务的原创插画。
-- 涉及拍照、录音和上网时，明确提醒孩子先征得家长或老师同意。
+- 三年级：观察现象，用自己的话解释输入、处理和输出，养成核验与求助习惯。
+- 四年级：整理数据、比较规则与学习方法，用测试证据改进分类系统。
+- 五年级：理解模型表示与应用链路，完成带检索、引用和分层评测的知识助手。
+- 六年级：把模型、数据、工具、权限、日志和人组成系统，用失败证据参加责任答辩。
 
-## 目录结构
+完整设计依据和逐册大纲见 [series/CURRICULUM.md](series/CURRICULUM.md)，统一角色与插图规范见 [series/VISUAL_GUIDE.md](series/VISUAL_GUIDE.md)。
+
+## 仓库结构
 
 ```text
-book/
-  book-manifest.json       书稿顺序与元信息
-  OUTLINE.md               全书大纲
-  STYLE_GUIDE.md           写作和术语规范
-  front-matter/            书名页、导读
-  chapters/                各章正文
-  back-matter/             术语表、活动材料
-  assets/
-    storyboards/           漫画分镜
-    prompts/               插画生成提示词
-    illustrations/
-      base/                无标注底图，供脚本重复生成成品
-      source/              可编辑高清源文件（默认不提交大型工程文件）
-      print/               印刷用图片
-      epub/                电子书优化图片
-tools/                     构建与检查工具
-tests/                     自动化测试
-comic/                     漫画分析、角色表、分镜和生成提示词
-dist/                      已校验的 EPUB 阅读版与校验值
+books/
+  grade-3/                 《AI 小侦探》
+  grade-4/                 《AI 小工程师》
+  grade-5/                 《AI 模型训练营》
+  grade-6/                 《AI 系统设计师》
+    book-manifest.json     本册元信息、章节顺序和质量要求
+    front-matter/          书名页与导读
+    chapters/              12 章正文
+    back-matter/           40 词术语表、任务卡、成人指南、参考资料
+    assets/                封面和中文高清插图
+series/                    全系列课程与视觉规范
+tools/                     构建、插图标注和发布工具
+tests/                     四册共用质量检查
+dist/grade-*/              可直接下载的 EPUB
 ```
 
-## 构建与检查
+每册的阅读顺序只由该册 `book-manifest.json` 管理。新增、删除、重排或改名章节时，编辑对应清单，不需要修改 EPUB 构建器。
+
+## 本地构建
 
 ```bash
-python3 -m pip install -r requirements.txt
-python3 tools/annotate_illustrations.py
-python3 tools/build_book.py
-python3 tools/build_epub.py
-python3 -m unittest discover -s tests
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python tools/build_series.py
+.venv/bin/python -m unittest discover -s tests -v
 ```
 
-插图说明集中维护在 `book/assets/illustrations/labels.json`。标注脚本从 `base/` 底图生成印刷 PNG 和 EPUB JPEG，因此可以重复运行；自动找不到中文字体时，可通过 `BOOK_CJK_FONT=/path/to/font.ttc` 指定字体。构建结果输出到 `build/book.md` 和 `build/ai-detective.epub`。EPUB 包含分章目录、稳定锚点、封面和内嵌高清插图，可在支持 EPUB 3 的阅读器中使用目录、书签和笔记功能。章节增删和重排只需要修改 `book/book-manifest.json`。
-
-发布前将校验通过的文件复制到 `dist/`，并用下面的命令核对下载文件：
+构建结果位于 `build/*.md` 和 `build/*.epub`。发布维护者使用下面的命令一次更新四册下载文件与 SHA-256：
 
 ```bash
-shasum -a 256 -c dist/SHA256SUMS
+.venv/bin/python tools/build_series.py --publish
+.venv/bin/python tools/build_series.py --verify-dist
 ```
 
-## 当前进度
+修改四至六年级知识图配置后，使用对应分册路径重新生成；三年级历史插图继续由中文标注脚本维护。
 
-- 已完成读者定位、写作规范和 12 章大纲。
-- 已完成全部 12 章正文，覆盖 AI、机器学习、测试、感知、生成式 AI、大语言模型、提示设计、幻觉核验、机器人、安全与综合设计。
-- 已建立统一角色参考表，完成 27 幅正式插画及对应分镜、提示词；知识图均配有中文说明或正文图注。
-- EPUB/GitHub 阅读版插画统一为 2000×1500 高质量 JPEG；印刷 PNG 在本地生成目录维护。
+```bash
+.venv/bin/python tools/generate_series_visuals.py --book-root books/grade-6
+.venv/bin/python tools/annotate_illustrations.py --book-root books/grade-6
+```
 
-在线仓库：<https://github.com/zenghao0708/ai-first-steps-for-kids>
+## 内容与安全原则
 
-## 授权说明
+- 先讲生活问题，再解释技术名称；不把 AI 拟人化或描述成永远正确。
+- 代码、实验和任务必须可复现；在线能力只作为成人控制下的扩展。
+- 插图承担解释任务，关键节点使用准确中文，连线接触边框但不穿过节点或文字。
+- 儿童活动默认使用虚构数据，不提交真实姓名、照片、声音、位置、账号或校内资料。
+- 高年级项目必须有边界、失败案例、停止条件、替代流程和人工责任人。
 
-- 书稿、任务卡、插画和 EPUB： [CC BY-NC-SA 4.0](LICENSE-CONTENT.md)
+参与方式见 [CONTRIBUTING.md](CONTRIBUTING.md)，发版门槛见 [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md)。
+
+## 授权
+
+- 书稿、任务卡、插画和 EPUB：[CC BY-NC-SA 4.0](LICENSE-CONTENT.md)
 - 构建工具与测试代码：[MIT License](LICENSE-CODE)
 
 详细边界见 [LICENSE.md](LICENSE.md)。商业出版或付费课程需另行取得授权。

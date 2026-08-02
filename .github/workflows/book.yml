@@ -1,4 +1,4 @@
-name: Build book
+name: Build book series
 
 on:
   push:
@@ -25,25 +25,18 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Build manuscript
-        run: python tools/build_book.py
-
-      - name: Build and validate EPUB
-        run: |
-          python tools/build_epub.py
-          python tools/build_epub.py --validate build/ai-detective.epub
+      - name: Build and validate all EPUBs
+        run: python tools/build_series.py
 
       - name: Run tests
         run: python -m unittest discover -s tests -v
 
-      - name: Verify published artifact
-        run: |
-          cmp build/ai-detective.epub dist/ai-detective.epub
-          shasum -a 256 -c dist/SHA256SUMS
+      - name: Verify published artifacts
+        run: python tools/build_series.py --verify-dist
 
-      - name: Upload EPUB
+      - name: Upload EPUBs
         uses: actions/upload-artifact@v7
         with:
-          name: ai-detective-epub
-          path: build/ai-detective.epub
+          name: ai-first-steps-for-kids-epubs
+          path: build/*.epub
           if-no-files-found: error

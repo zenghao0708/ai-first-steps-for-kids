@@ -20,8 +20,8 @@ except ModuleNotFoundError:  # Support `python tools/build_epub.py` from the rep
     from build_book import DEFAULT_MANIFEST, ROOT, load_sources, validate_images
 
 
-DEFAULT_OUTPUT = ROOT / "build" / "ai-detective.epub"
-DEFAULT_COVER = ROOT / "book" / "assets" / "cover" / "cover.jpg"
+DEFAULT_OUTPUT = ROOT / "build" / "ai-detective-grade-3.epub"
+DEFAULT_COVER = ROOT / "books" / "grade-3" / "assets" / "cover" / "cover.jpg"
 EPUB_NS = "http://www.idpf.org/2007/ops"
 XHTML_NS = "http://www.w3.org/1999/xhtml"
 OPF_NS = "http://www.idpf.org/2007/opf"
@@ -232,6 +232,7 @@ def build_nav(items: list[dict], language: str) -> str:
         lines.extend(["      </ol>", "    </li>"])
 
     toc = "\n".join(lines)
+    first_chapter_id = chapters[0]["id"] if chapters else items[0]["id"]
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="{XHTML_NS}" xmlns:epub="{EPUB_NS}" xml:lang="{html.escape(language)}" lang="{html.escape(language)}">
@@ -246,7 +247,7 @@ def build_nav(items: list[dict], language: str) -> str:
   <nav epub:type="landmarks" hidden="hidden">
     <ol>
       <li><a epub:type="cover" href="cover.xhtml">封面</a></li>
-      <li><a epub:type="bodymatter" href="text/ch01-ai-around-us.xhtml">正文</a></li>
+      <li><a epub:type="bodymatter" href="text/{html.escape(first_chapter_id, quote=True)}.xhtml">正文</a></li>
     </ol>
   </nav>
 </body>
@@ -339,9 +340,17 @@ def write_zip_entry(archive: zipfile.ZipFile, name: str, data: str | bytes, comp
     archive.writestr(info, data.encode("utf-8") if isinstance(data, str) else data)
 
 
-def build_epub(manifest_path: Path, output_path: Path, cover_path: Path = DEFAULT_COVER) -> dict[str, int | str]:
+def build_epub(
+    manifest_path: Path,
+    output_path: Path,
+    cover_path: Path | None = None,
+) -> dict[str, int | str]:
     manifest, source_paths = load_sources(manifest_path.resolve())
     items = manifest["source_order"]
+    if cover_path is None:
+        cover_path = manifest_path.resolve().parent / manifest.get(
+            "cover", "assets/cover/cover.jpg"
+        )
     if not cover_path.is_file():
         raise FileNotFoundError(f"找不到封面：{cover_path}")
 
@@ -358,8 +367,11 @@ def build_epub(manifest_path: Path, output_path: Path, cover_path: Path = DEFAUL
         body_type = "chapter" if item["type"] == "chapter" else item["type"].replace("-", "")
         documents[item["id"]] = xhtml_document(item["title"], body, body_type, manifest["language"])
 
-    uid = f"urn:uuid:{uuid.uuid5(uuid.NAMESPACE_URL, 'https://github.com/zenghao0708/ai-first-steps-for-kids')}"
-    cover_body = '<div class="cover-page"><img src="images/cover.jpg" alt="AI 小侦探封面" /></div>'
+    slug = manifest.get("slug", manifest_path.resolve().parent.name)
+    uid_source = f"https://github.com/zenghao0708/ai-first-steps-for-kids/{slug}"
+    uid = f"urn:uuid:{uuid.uuid5(uuid.NAMESPACE_URL, uid_source)}"
+    cover_alt = html.escape(f"{manifest['title']}封面", quote=True)
+    cover_body = f'<div class="cover-page"><img src="images/cover.jpg" alt="{cover_alt}" /></div>'
     cover_xhtml = xhtml_document(manifest["title"], cover_body, "cover", manifest["language"]).replace(
         'href="../styles/book.css"', 'href="styles/book.css"'
     )
@@ -453,8 +465,8 @@ def validate_epub(epub_path: Path) -> dict[str, int]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="从书稿 manifest 构建可导航的 EPUB 3 电子书")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--cover", type=Path, default=DEFAULT_COVER)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--cover", type=Path)
     parser.add_argument("--validate", type=Path, help="只校验指定 EPUB，不重新构建")
     args = parser.parse_args()
 
@@ -463,7 +475,9 @@ def main() -> None:
         print(f"EPUB 校验通过：{args.validate}（{result['entries']} 个文件）")
         return
 
-    result = build_epub(args.manifest, args.output, args.cover)
+    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
+    output = args.output or ROOT / "build" / f"{manifest.get('slug', 'book')}.epub"
+    result = build_epub(args.manifest, output, args.cover)
     print(
         f"已构建 EPUB：{result['sources']} 个源文件，{result['images']} 幅图片，"
         f"{result['entries']} 个包内文件：{result['output']}"
